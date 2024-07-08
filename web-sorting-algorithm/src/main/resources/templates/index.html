@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Sorting Application</h1>
+    <form action="/sort" method="post">
+        <div class="form-group">
+            <label for="algorithm">Select Sorting Algorithm:</label>
+            <select id="algorithm" name="algorithm">
+                <option value="heap">Heap Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="radix">Radix Sort</option>
+                <option value="bucket">Bucket Sort</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="data">Enter Data (comma separated):</label>
+            <input type="text" id="data" name="data">
+        </div>
+        <button type="submit">Sort</button>
+    </form>
+
+    <div th:if="${result != null}">
+        <h2>Sorted Data:</h2>
+        <p th:text="${result}"></p>
+    </div>
+</div>
+</body>
+</html>
+
